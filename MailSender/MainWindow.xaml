@@ -6,7 +6,27 @@
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Create"/>
+                <MenuItem Header="Open"/>
+                <MenuItem Header="Save"/>
+                <MenuItem Header="Close"/>
+                <Separator/>
+                <MenuItem Header="Exit" Click="OnExitClick"/>
+            </MenuItem>
+            <MenuItem Header="Service"/>
+            <MenuItem Header="Help"/>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <TextBlock Text="Готов вкалывать!"/>
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Списки"></TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Письма"></TabItem>
+            <TabItem Header="Статистика"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>

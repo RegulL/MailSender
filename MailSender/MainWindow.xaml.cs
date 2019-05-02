@@ -24,5 +24,10 @@ namespace MailSender
         {
             InitializeComponent();
         }
+
+        private void OnExitClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
