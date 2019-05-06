@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A259E569-2810-4C01-987B-B0DB0094C2D7}</ProjectGuid>
+    <ProjectGuid>{4ADF1BD0-8AC2-4B9A-94D2-FA59DFF4C32A}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>MailSender</RootNamespace>
-    <AssemblyName>MailSender</AssemblyName>
+    <RootNamespace>MailSender.WPFTest</RootNamespace>
+    <AssemblyName>MailSender.WPFTest</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,7 +55,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MailSenderWPF.xaml">
+    <Compile Include="EmailSendServiceClass.cs" />
+    <Compile Include="ErrorWindow.xaml.cs">
+      <DependentUpon>ErrorWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StaticVariables.cs" />
+    <Compile Include="SuccessWindow.xaml.cs">
+      <DependentUpon>SuccessWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ErrorWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MailSenderTest.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +75,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MailSenderWPF.xaml.cs">
-      <DependentUpon>MailSenderWPF.xaml</DependentUpon>
+    <Compile Include="MailSenderTest.xaml.cs">
+      <DependentUpon>MailSenderTest.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SuccessWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Theme.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -97,12 +113,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
-      <Project>{e6301dec-d8dd-42d5-b18d-3374f780e03a}</Project>
-      <Name>MailSender.lib</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

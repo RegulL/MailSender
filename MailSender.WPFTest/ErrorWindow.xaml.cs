@@ -10,24 +10,24 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MailSender
+namespace MailSender.WPFTest
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ErrorWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ErrorWindow : Window
     {
-        public MainWindow()
+        public ErrorWindow(string Error)
         {
             InitializeComponent();
+            tbError.Text = Error;
         }
 
-        private void OnExitClick(object sender, RoutedEventArgs e)
+        private void ExitClick(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
     }
 }
