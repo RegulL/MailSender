@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="MailSender.Components.TabItemControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MailSender.Components"
+             xmlns:fa="http://schemas.fontawesome.io/icons/"
+             mc:Ignorable="d" 
+             d:DesignHeight="20" d:DesignWidth="140" >
+    <UniformGrid Rows="1" Button.Click="OnButtonClick">
+        <Button Name="LeftArrow">
+            <fa:ImageAwesome Height="16" Icon="ArrowCircleOutlineLeft" Foreground="White"/>
+        </Button>
+        <Button Name="RightArrow">
+            <fa:ImageAwesome Height="16" Icon="ArrowCircleOutlineRight" Foreground="White"/>
+        </Button>
+    </UniformGrid>
+</UserControl>
