@@ -13,6 +13,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MailSender.Components;
+using MailSender.lib;
+using MailSender.lib.Data;
+using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender
 {
@@ -59,6 +62,51 @@ namespace MailSender
         private void toShedulerClick(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedIndex = 1;
+        }
+
+        private void sendAtOnce(object sender, RoutedEventArgs e)
+        {
+            if (tbMailText.Text == String.Empty)
+            {
+                MainTabControl.SelectedIndex = 2;
+                ErrorWindow errorWindow = new ErrorWindow("Письмо не заполнено!");
+                errorWindow.Owner = this;
+                errorWindow.Show();
+                return;
+            }
+            string strLogin = (cbServers.SelectedItem as Server).Login;
+            string strPassword = (cbServers.SelectedItem as Server).Password;
+            if (String.IsNullOrEmpty(strLogin))
+            {
+                MessageBox.Show("Введите логин");
+                return;
+            }
+            if (String.IsNullOrEmpty(strPassword))
+            {
+                MessageBox.Show("Введите пароль");
+                return;
+            }            
+            MailSenderService senderService = new MailSenderService(strLogin, strPassword);
+            senderService.SendMails((IQueryable<Recepient>)dgRecepients.ItemsSource);
+        }
+
+        private void btnSendClick(object sender, RoutedEventArgs e)
+        {
+            MailScheduler mailScheduler = new MailScheduler();
+            TimeSpan tsSend = mailScheduler.GetSendTime(toolkit_TimePicker.Text);
+            if (tsSend == new TimeSpan())
+            {
+                MessageBox.Show("Некоректный формат даты");
+                return;
+            }
+            DateTime dtSend = (cldSchedulDateTimes.SelectedDate ?? DateTime.Today).Add(tsSend);
+            if (dtSend < DateTime.Now)
+            {
+                MessageBox.Show("Неверно введена дата");
+                return;
+            }
+            MailSenderService mailSenderService = new MailSenderService(cbSenders.Text, cbSenders.SelectedValue.ToString());
+            mailScheduler.SendEmails(dtSend, mailSenderService, (IQueryable<Recepient>)dgRecepients.ItemsSource);
         }
     }
 }

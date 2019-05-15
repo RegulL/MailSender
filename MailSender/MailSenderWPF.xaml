@@ -28,7 +28,7 @@
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
             <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=StatusBar}}">
-                <component:TabItemControl MaxWidth="100" DockPanel.Dock="Right" Margin="0,0,7,0" Height="18"
+                <component:TabItemControl Width="100" DockPanel.Dock="Right" Margin="0,0,7,0" Height="20"
                                           LeftButtonClick="TabItemControl_LeftButtonClick"
                                           RightButtonClick="TabItemControl_RightButtonClick"/>
                 <TextBlock Text="Готов вкалывать!" DockPanel.Dock="Left" FontSize="14"/>
@@ -61,7 +61,8 @@
                                        Foreground="White">Оптравители:</TextBlock>
                             <ComboBox Width="120" 
                                       ItemsSource="{x:Static data:TestData.Senders}"
-                                      SelectedIndex="0">
+                                      SelectedIndex="0"
+                                      Name="cbSenders">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="data:Sender">
                                         <StackPanel Orientation="Horizontal">
@@ -97,6 +98,7 @@
                             <ComboBox Width="120" 
                                       ItemsSource="{x:Static data:TestData.Servers}" 
                                       SelectedIndex="0"
+                                      Name="cbServers"
                                       >
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="data:Server">
@@ -167,6 +169,7 @@
                                   GridLinesVisibility="Vertical"
                                   VerticalGridLinesBrush="DarkGray"
                                   AlternatingRowBackground="LightGray"
+                                  Name="dgRecepients"
                                   >
                             <DataGrid.Columns>
                                 <DataGridCheckBoxColumn/>
@@ -196,13 +199,14 @@
                             <toolkit:TimePicker Name="toolkit_TimePicker" Background="LightGray"/>
                         </DockPanel>
                         <StackPanel Margin="4,0">
-                            <Button Margin="0,4,0,0">
+                            <Button Margin="0,4,0,0"
+                                    Click="btnSendClick">
                                 <DockPanel Height="20">
                                     <fa:ImageAwesome Height="16" Icon="ClockOutline" Margin="0,0,4,0" Foreground="White"/>
                                     <TextBlock VerticalAlignment="Center" Foreground="White">Запланировать</TextBlock>
                                 </DockPanel>
                             </Button>
-                            <Button Margin="0,4,0,0">
+                            <Button Margin="0,4,0,0" Click="sendAtOnce">
                                 <DockPanel Height="20">
                                     <fa:ImageAwesome Height="16" Icon="SendOutline" Margin="0,0,4,0" Foreground="White"/>
                                     <TextBlock VerticalAlignment="Center" Foreground="White">Отправить сейчас</TextBlock>
@@ -242,10 +246,11 @@
                     <GroupBox Header="Письмо" Grid.Column="1">
                         <DockPanel>
                             <GroupBox Header="Заголовок" DockPanel.Dock="Top">
-                                <TextBox/>
+                                <TextBox Name="tbMailSubject"/>
                             </GroupBox>
                             <GroupBox Header="Текст">
-                                <TextBox AcceptsReturn="True"/>
+                                <TextBox AcceptsReturn="True"
+                                         Name ="tbMailText"/>
                             </GroupBox>
                         </DockPanel>
                     </GroupBox>

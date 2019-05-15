@@ -16,7 +16,8 @@ namespace MailSender.lib.Data
         };
         public static List<Server> Servers { get; } = new List<Server>()
         {
-            new Server{ Name = "Яндекс", Address = "smtp.yandex.ru", Port = 25, UseSSL = true, Login = "UserName", Password = "password"}
+            new Server{ Name = "Яндекс", Address = "smtp.yandex.ru", Port = 25, UseSSL = true, Login = "UserName", Password = "password"},
+            new Server{ Name = "Mail.com", Address = "smtp.mail.com", Port=587, UseSSL = true, Login = "UserName", Password = "password"}
         };
     }
 }

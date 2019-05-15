@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:MailSender.Components"
              xmlns:fa="http://schemas.fontawesome.io/icons/"
              mc:Ignorable="d" 
-             d:DesignHeight="25" d:DesignWidth="100" >
+             d:DesignHeight="20" d:DesignWidth="140" >
     <UniformGrid Rows="1" Button.Click="OnButtonClick">
         <Button Name="LeftArrow">
             <fa:ImageAwesome Height="16" Icon="ArrowCircleOutlineLeft" Foreground="White"/>
