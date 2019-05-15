@@ -7,6 +7,9 @@ using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.lib
 {
+    /// <summary>
+    /// Класс для работы с базой данных, с использованием Linq2SQL
+    /// </summary>
     class DataBase
     {
         MailSenderDB SenderDB = new MailSenderDB();

@@ -9,6 +9,9 @@ using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.lib
 {
+    /// <summary>
+    /// Реализация планировщика
+    /// </summary>
     public class MailScheduler
     {
         DispatcherTimer timer = new DispatcherTimer();
@@ -17,6 +20,7 @@ namespace MailSender.lib
         DateTime dtSend;
         IQueryable<Recepient> recepients;
 
+        // Метод для конвертации строки в TimeSpan
         public TimeSpan GetSendTime(string strSendTime)
         {
             TimeSpan timeSpan = new TimeSpan();
@@ -28,6 +32,12 @@ namespace MailSender.lib
             return timeSpan;
         }
 
+
+        /// <summary>
+        /// Методы реализующие отправку сообщения в установленное время 
+        /// SendEmails запускает таймер и заполняет поля переданными аргументами
+        /// Timer_tick непосредственно сравниваает дату и время, и при совпадении отправляет письмо
+        /// </summary> 
         public void SendEmails(DateTime dtSend, MailSenderService mailSenderService, IQueryable<Recepient> recepients)
         {
             this.mailSenderService = mailSenderService;

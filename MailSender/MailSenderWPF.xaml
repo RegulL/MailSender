@@ -30,7 +30,8 @@
             <DockPanel Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=StatusBar}}">
                 <component:TabItemControl Width="100" DockPanel.Dock="Right" Margin="0,0,7,0" Height="20"
                                           LeftButtonClick="TabItemControl_LeftButtonClick"
-                                          RightButtonClick="TabItemControl_RightButtonClick"/>
+                                          RightButtonClick="TabItemControl_RightButtonClick"
+                                          x:Name="TabItemControl"/>
                 <TextBlock Text="Готов вкалывать!" DockPanel.Dock="Left" FontSize="14"/>
             </DockPanel>
         </StatusBar>

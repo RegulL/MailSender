@@ -9,6 +9,9 @@ using MailSender.lib.Data.Linq2SQL;
 
 namespace MailSender.lib
 {
+    /// <summary>
+    /// Класс реализует отправку писем
+    /// </summary>
     public class MailSenderService
     {
         private string strLogin;
@@ -24,6 +27,11 @@ namespace MailSender.lib
             strPassword = Password;
         }
 
+        /// <summary>
+        /// SendMail отправляет письмо на конкретный адрес
+        /// SendMails в качестве аргумента принимает все адреса находящиеся в базе данных в таблице Recepients
+        /// </summary>
+        
         private void SendMail(string mail, string name)
         {
             using(MailMessage mm = new MailMessage(strLogin, mail))

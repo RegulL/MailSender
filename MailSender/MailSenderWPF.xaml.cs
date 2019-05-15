@@ -51,7 +51,6 @@ namespace MailSender
             if (!(sender is TabItemControl tabItemControl)) return;
 
             tabItemControl.RightButtonVisible = MainTabControl.SelectedIndex < MainTabControl.Items.Count - 1;
-
             if (tabItemControl.RightButtonVisible)
             {
                 MainTabControl.SelectedIndex++;
@@ -69,11 +68,18 @@ namespace MailSender
             if (tbMailText.Text == String.Empty)
             {
                 MainTabControl.SelectedIndex = 2;
+
+                //Вызов окна ошибки, и передача строки в качестве аргумента. Окно ErrorWindow в папке Components.
+                 
                 ErrorWindow errorWindow = new ErrorWindow("Письмо не заполнено!");
                 errorWindow.Owner = this;
                 errorWindow.Show();
+
+
                 return;
             }
+
+            // Строки логина и пароля заполнены соответствующими полями класса Сервер, т.к Items Комбо бокса содержат объекты этого класса
             string strLogin = (cbServers.SelectedItem as Server).Login;
             string strPassword = (cbServers.SelectedItem as Server).Password;
             if (String.IsNullOrEmpty(strLogin))
